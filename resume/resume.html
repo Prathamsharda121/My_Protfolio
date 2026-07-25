@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Pratham Sharda — Résumé</title>
+<style>
+  :root {
+    --ink: #0f172a;
+    --sub: #475569;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --cyan: #0e7490;
+    --violet: #6d28d9;
+    --accent: #0891b2;
+    --sidebar: #0b1220;
+    --sidebar-soft: #111a2e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page { size: A4; margin: 0; }
+
+  html, body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    font-size: 10.2px;
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0 auto;
+    background: #fff;
+    display: grid;
+    grid-template-columns: 66mm 1fr;
+  }
+
+  /* ---------------- Sidebar ---------------- */
+  .side {
+    background: linear-gradient(165deg, var(--sidebar), var(--sidebar-soft));
+    color: #e2e8f0;
+    padding: 7mm 7mm;
+  }
+  .avatar {
+    width: 27mm;
+    height: 27mm;
+    border-radius: 50%;
+    margin: 0 auto 4mm;
+    object-fit: cover;
+    object-position: center 28%;
+    border: 2px solid rgba(255,255,255,0.18);
+    box-shadow: 0 0 0 4px rgba(8,145,178,0.18);
+    display: block;
+  }
+  .side h1 {
+    font-size: 19px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.2px;
+    background: linear-gradient(100deg, #67e8f9, #a78bfa);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .side .role {
+    text-align: center;
+    font-size: 10px;
+    color: #94a3b8;
+    margin-top: 1.6mm;
+    margin-bottom: 5mm;
+    letter-spacing: 0.4px;
+  }
+  .side-block { margin-bottom: 3.6mm; }
+  .side-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #67e8f9;
+    padding-bottom: 1.6mm;
+    margin-bottom: 2.6mm;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 2.5mm;
+    font-size: 9.4px;
+    color: #cbd5e1;
+    margin-bottom: 2mm;
+    word-break: break-word;
+  }
+  .contact-item .ic {
+    color: #38bdf8;
+    width: 4mm;
+    flex-shrink: 0;
+    text-align: center;
+    font-weight: 700;
+  }
+  .contact-item a { color: #cbd5e1; text-decoration: none; }
+
+  .skill-cat { margin-bottom: 2mm; }
+  .skill-cat .cat {
+    font-size: 9.2px;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin-bottom: 1.3mm;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 1.4mm; }
+  .chip {
+    font-size: 8.6px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #cbd5e1;
+    padding: 0.8mm 2mm;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+
+  .edu-item { margin-bottom: 2.6mm; }
+  .edu-item .deg { font-size: 10px; font-weight: 700; color: #f1f5f9; }
+  .edu-item .inst { font-size: 9px; color: #93c5fd; margin: 0.3mm 0; }
+  .edu-item .meta { font-size: 8.8px; color: #94a3b8; }
+
+  .cert-item {
+    font-size: 9px;
+    color: #cbd5e1;
+    margin-bottom: 2.4mm;
+    padding-left: 3mm;
+    position: relative;
+  }
+  .cert-item::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 1.6mm;
+    width: 1.4mm; height: 1.4mm;
+    border-radius: 50%;
+    background: linear-gradient(120deg, #22d3ee, #a78bfa);
+  }
+  .cert-item b { color: #f1f5f9; font-weight: 600; }
+
+  /* ---------------- Main ---------------- */
+  .main { padding: 12mm 11mm 12mm 10mm; }
+
+  .headline {
+    font-size: 10.5px;
+    color: var(--accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2mm;
+  }
+  .tagline {
+    font-size: 11.4px;
+    color: var(--sub);
+    margin-bottom: 6mm;
+    line-height: 1.55;
+  }
+
+  .section { margin-bottom: 6.5mm; }
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 2.5mm;
+    margin-bottom: 3.2mm;
+  }
+  .sec-head .bar {
+    width: 4mm; height: 4mm;
+    border-radius: 1.4mm;
+    background: linear-gradient(135deg, var(--cyan), var(--violet));
+    flex-shrink: 0;
+  }
+  .sec-head h2 {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+  .sec-head .rule {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .job { margin-bottom: 4.6mm; }
+  .job:last-child { margin-bottom: 0; }
+  .job-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 4mm;
+  }
+  .job-role { font-size: 11.4px; font-weight: 700; color: var(--ink); }
+  .job-co { font-size: 10.4px; font-weight: 600; color: var(--cyan); }
+  .job-period {
+    font-size: 9px;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, var(--cyan), var(--violet));
+    padding: 0.6mm 2.4mm;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .job-period.past {
+    color: var(--muted);
+    background: #f1f5f9;
+  }
+  .job-sum { font-size: 9.8px; color: var(--sub); margin: 1.4mm 0 1.8mm; }
+  ul.bullets { list-style: none; }
+  ul.bullets li {
+    font-size: 9.8px;
+    color: #334155;
+    padding-left: 4.5mm;
+    position: relative;
+    margin-bottom: 1.3mm;
+    line-height: 1.48;
+  }
+  ul.bullets li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--violet);
+    font-size: 9px;
+    top: 0.2mm;
+  }
+
+  .proj { margin-bottom: 3.4mm; }
+  .proj-top { display: flex; align-items: baseline; gap: 2.5mm; }
+  .proj-name { font-size: 10.4px; font-weight: 700; color: var(--ink); }
+  .proj-tag { font-size: 8.8px; color: var(--accent); font-weight: 600; }
+  .proj-desc { font-size: 9.6px; color: #475569; margin-top: 0.6mm; }
+  .proj-stack { font-size: 8.6px; color: var(--muted); margin-top: 0.8mm; font-style: italic; }
+</style>
+</head>
+<body>
+  <div class="page">
+    <!-- Sidebar -->
+    <aside class="side">
+      <img class="avatar" src="pratham.jpg" alt="Pratham Sharda" />
+      <h1>Pratham Sharda</h1>
+      <div class="role">Junior Program Manager · AI &amp; Data</div>
+
+      <div class="side-block">
+        <div class="side-title">Contact</div>
+        <div class="contact-item"><span class="ic">✉</span><a href="mailto:prathamsharda986@gmail.com">prathamsharda986@gmail.com</a></div>
+        <div class="contact-item"><span class="ic">☎</span><span>+91 98163 74871</span></div>
+        <div class="contact-item"><span class="ic">in</span><a href="https://www.linkedin.com/in/pratham-sharda-21040234a">linkedin.com/in/pratham-sharda</a></div>
+        <div class="contact-item"><span class="ic">gh</span><a href="https://github.com/Prathamsharda121">github.com/Prathamsharda121</a></div>
+        <div class="contact-item"><span class="ic">◉</span><span>India</span></div>
+      </div>
+
+      <div class="side-block">
+        <div class="side-title">Core Skills</div>
+        <div class="skill-cat">
+          <div class="cat">AI &amp; LLM</div>
+          <div class="chips">
+            <span class="chip">Claude</span><span class="chip">Prompt Engineering</span>
+            <span class="chip">LangChain</span><span class="chip">RAG</span>
+            <span class="chip">GenAI</span><span class="chip">Machine Learning</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="cat">Data &amp; Analytics</div>
+          <div class="chips">
+            <span class="chip">Python</span><span class="chip">SQL</span>
+            <span class="chip">Power BI</span><span class="chip">Metabase</span>
+            <span class="chip">Looker</span><span class="chip">Advanced Excel</span>
+            <span class="chip">App Script</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="cat">Web &amp; Backend</div>
+          <div class="chips">
+            <span class="chip">Next.js</span><span class="chip">React</span>
+            <span class="chip">Flask</span><span class="chip">TypeScript</span>
+            <span class="chip">REST APIs</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="cat">Infra &amp; Platforms</div>
+          <div class="chips">
+            <span class="chip">Vercel</span><span class="chip">Neon</span>
+            <span class="chip">Supabase</span><span class="chip">AWS</span>
+            <span class="chip">GitLab</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="cat">Growth &amp; Ops</div>
+          <div class="chips">
+            <span class="chip">MoEngage</span><span class="chip">Gupshup</span>
+            <span class="chip">CRM</span><span class="chip">Admin Panels</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="side-block">
+        <div class="side-title">Education</div>
+        <div class="edu-item">
+          <div class="deg">M.C.A.</div>
+          <div class="inst">CGC — Landran</div>
+          <div class="meta">2024 – 2026 · CGPA 9.08</div>
+        </div>
+        <div class="edu-item">
+          <div class="deg">B.C.A.</div>
+          <div class="inst">Maharaja Agrasen University</div>
+          <div class="meta">2021 – 2024 · CGPA 6.84</div>
+        </div>
+      </div>
+
+      <div class="side-block">
+        <div class="side-title">Certifications</div>
+        <div class="cert-item"><b>Python Essentials</b> — CISCO · Apr 2025</div>
+        <div class="cert-item"><b>Data Analysis &amp; Power BI</b> — Office Masters · Mar 2025</div>
+        <div class="cert-item"><b>AI Developer Internship</b> — GenAI Tools · Jul 2025</div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <div class="headline">Junior Program Manager — AI · Data · Automation</div>
+      <p class="tagline">
+        MCA graduate and product-minded builder who turns messy operations into clean, automated tools.
+        I ship AI-powered internal products, CRMs and analytics stacks end-to-end — from database schema
+        to production deployment — using strong prompt engineering and a bias for measurable impact.
+      </p>
+
+      <div class="section">
+        <div class="sec-head"><span class="bar"></span><h2>Experience</h2><span class="rule"></span></div>
+
+        <div class="job">
+          <div class="job-top">
+            <div>
+              <span class="job-role">Junior Program Manager</span> ·
+              <span class="job-co">Fitelo</span>
+            </div>
+            <span class="job-period">Present</span>
+          </div>
+          <div class="job-sum">Own the build of internal products, AI panels and analytics that power day-to-day operations across teams.</div>
+          <ul class="bullets">
+            <li>Designed and shipped a <b>Quality-team CRM</b> that converts client emails and WhatsApp queries into structured, trackable tickets routed to Relationship Managers for resolution.</li>
+            <li>Built <b>AI panels and internal tools</b> powered by Claude and careful prompt engineering to automate repetitive, high-volume workflows.</li>
+            <li>Ran production stacks across <b>Vercel, Neon, Supabase, AWS and GitLab</b> — owning everything from database to deployment.</li>
+            <li>Integrated <b>MoEngage, Gupshup WhatsApp templates and Metabase</b> to connect messaging, data and action, with analytics dashboards for decision-making.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-top">
+            <div>
+              <span class="job-role">Data Analyst</span> ·
+              <span class="job-co">Nureca Limited</span>
+            </div>
+            <span class="job-period past">Previous</span>
+          </div>
+          <div class="job-sum">Automated reporting and internal workflows using Google App Script, Sheets and advanced Excel.</div>
+          <ul class="bullets">
+            <li>Developed App Script automations and trackers that streamlined recurring team workflows.</li>
+            <li>Modelled and cleaned operational data across Google Sheets and advanced Excel.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="sec-head"><span class="bar"></span><h2>Key Projects</h2><span class="rule"></span></div>
+
+        <div class="proj">
+          <div class="proj-top"><span class="proj-name">Quality CRM &amp; Ticketing System</span><span class="proj-tag">Email + WhatsApp → tickets → resolution</span></div>
+          <div class="proj-desc">A CRM where client queries over email and WhatsApp are captured, de-duplicated and turned into trackable tickets that RMs resolve, with full status history and analytics.</div>
+          <div class="proj-stack">Next.js · Supabase · Gupshup · Vercel · AWS</div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-top"><span class="proj-name">AI Panels &amp; Internal Tools</span><span class="proj-tag">Claude-powered automation</span></div>
+          <div class="proj-desc">Admin panels with built-in AI features that automate content, triage and repetitive decisions across internal teams using strong prompt engineering.</div>
+          <div class="proj-stack">Claude · Prompt Engineering · Next.js · Neon</div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-top"><span class="proj-name">Analytics &amp; Dashboards Stack</span><span class="proj-tag">Metabase · Power BI · MoEngage</span></div>
+          <div class="proj-desc">End-to-end analytics surfacing production data through Metabase and Power BI dashboards with MoEngage campaign tracking — live, decision-ready numbers for teams.</div>
+          <div class="proj-stack">Metabase · Power BI · MoEngage · SQL</div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-top"><span class="proj-name">RAG Chatbot</span><span class="proj-tag">Document-grounded Q&amp;A</span></div>
+          <div class="proj-desc">An AI chatbot built with LangChain that retrieves relevant context from documents and answers questions grounded in source material.</div>
+          <div class="proj-stack">LangChain · Python · RAG · GenAI</div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-top"><span class="proj-name">Stocks Power BI Dashboard</span><span class="proj-tag">Live-updating market dashboard</span></div>
+          <div class="proj-desc">Transformed raw Excel stock data into a live, auto-refreshing Power BI dashboard with interactive visuals for tracking performance over time.</div>
+          <div class="proj-stack">Power BI · Excel · Data Modeling</div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-top"><span class="proj-name">House Price Prediction</span><span class="proj-tag">Random Forest regression</span></div>
+          <div class="proj-desc">A predictive ML model estimating housing prices from key property attributes, with feature engineering and evaluation.</div>
+          <div class="proj-stack">Python · Machine Learning · Random Forest</div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
