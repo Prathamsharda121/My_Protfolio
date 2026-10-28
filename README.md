@@ -2,7 +2,7 @@
 
 A modern, fully-animated personal portfolio. Dark "neon glow" aesthetic with an aurora background, glassmorphism, scroll-reveal motion, 3D-tilt project cards and a magnetic-button hero.
 
-Built with **Next.js 15 (App Router)** · **TypeScript** · **Tailwind CSS v4** · **Framer Motion** · **lucide-react**.
+Built with **Next.js 15 (App Router)** · **TypeScript** · **Tailwind CSS v4** · **Framer Motion** · **Lenis** (smooth scroll) · **lucide-react**.
 
 ## Getting started
 

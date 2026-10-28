@@ -7,11 +7,21 @@ import { navLinks, profile } from "@/lib/content";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string>("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    let lastY = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 24);
+      // Hide while scrolling down past the hero, show as soon as the user scrolls up.
+      if (Math.abs(y - lastY) > 6) {
+        setHidden(y > lastY && y > 400);
+        lastY = y;
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -39,7 +49,7 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-3 sm:pt-4">
       <motion.nav
         initial={{ y: -24, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        animate={{ y: hidden && !open ? -110 : 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`flex w-full max-w-5xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-300 sm:px-5 ${
           scrolled ? "glass-strong shadow-lg shadow-black/30" : "border border-transparent"
@@ -66,7 +76,7 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className={`relative rounded-full px-3.5 py-1.5 text-sm transition-colors ${
+                className={`group/link relative rounded-full px-3.5 py-1.5 text-sm transition-colors ${
                   isActive ? "text-ink" : "text-muted hover:text-ink"
                 }`}
               >
@@ -77,7 +87,18 @@ export function Navbar() {
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
-                {link.label}
+                {/* Text roll: label slides up, duplicate slides in from below */}
+                <span className="relative block h-[1.25em] overflow-hidden leading-[1.25em]">
+                  <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/link:-translate-y-full">
+                    {link.label}
+                  </span>
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 top-full block text-cyan transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/link:-translate-y-full"
+                  >
+                    {link.label}
+                  </span>
+                </span>
               </a>
             );
           })}

@@ -1,30 +1,19 @@
-/** Fixed, animated aurora + grid backdrop. Purely decorative. */
+/**
+ * Fixed aurora + grid backdrop. Static radial gradients (no CSS blur filters,
+ * no animation) so it costs nothing while scrolling.
+ */
 export function AuroraBackground() {
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      {/* Base wash */}
-      <div className="absolute inset-0 bg-bg" />
-
-      {/* Aurora blobs */}
       <div
-        className="absolute -top-[20%] -left-[10%] h-[55vw] w-[55vw] rounded-full opacity-50 blur-[120px]"
+        className="absolute inset-0"
         style={{
-          background: "radial-gradient(circle, rgba(34,211,238,0.35), transparent 60%)",
-          animation: "aurora-drift 18s ease-in-out infinite",
-        }}
-      />
-      <div
-        className="absolute top-[10%] right-[-15%] h-[50vw] w-[50vw] rounded-full opacity-45 blur-[120px]"
-        style={{
-          background: "radial-gradient(circle, rgba(139,92,246,0.38), transparent 60%)",
-          animation: "aurora-drift 22s ease-in-out infinite reverse",
-        }}
-      />
-      <div
-        className="absolute bottom-[-20%] left-[25%] h-[45vw] w-[45vw] rounded-full opacity-35 blur-[130px]"
-        style={{
-          background: "radial-gradient(circle, rgba(59,130,246,0.3), transparent 60%)",
-          animation: "aurora-drift 26s ease-in-out infinite",
+          background: [
+            "radial-gradient(55vw 55vw at 5% 0%, rgba(34,211,238,0.13), transparent 60%)",
+            "radial-gradient(50vw 50vw at 100% 20%, rgba(139,92,246,0.15), transparent 60%)",
+            "radial-gradient(45vw 45vw at 45% 110%, rgba(59,130,246,0.1), transparent 60%)",
+            "#05060a",
+          ].join(","),
         }}
       />
 
@@ -38,7 +27,7 @@ export function AuroraBackground() {
         }}
       />
 
-      {/* Noise / vignette */}
+      {/* Vignette */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(5,6,10,0.9)_100%)]" />
     </div>
   );

@@ -10,17 +10,17 @@ export const profile = {
   initials: "PS",
   // Rotating words shown under the name in the hero.
   roles: [
-    "Junior Program Manager",
-    "AI & Automation Builder",
-    "Data Analyst",
+    "Assistant Manager — Product AI",
+    "AI Agents Builder",
+    "Sales & Ops Automation",
     "Full-Stack Problem Solver",
   ],
-  headline: "I build AI-powered internal tools & data systems.",
+  headline: "I build AI agents, CRMs & automations that grow sales.",
   subheadline:
-    "Junior Program Manager at Fitelo — turning messy operations into clean, automated products. I ship CRMs, AI panels and analytics that teams actually use.",
+    "Assistant Manager, Product AI at Fitelo — I build CRMs from scratch, AI agents and Slack automations that make sales and operations teams faster and more effective.",
   location: "India",
   currentCompany: "Fitelo",
-  currentRole: "Junior Program Manager",
+  currentRole: "Assistant Manager — Product AI",
   photo: "/pratham-photo.jpg",
   resume: "/Pratham-Sharda-Resume.pdf",
 } as const;
@@ -35,22 +35,22 @@ export const contact = {
 
 export const stats = [
   { value: "9.08", suffix: "/10", label: "MCA CGPA" },
-  { value: "6", suffix: "+", label: "Products shipped" },
+  { value: "10", suffix: "+", label: "Products & agents shipped" },
   { value: "10", suffix: "+", label: "Tools & platforms" },
   { value: "3", suffix: "", label: "Certifications" },
 ] as const;
 
 export const about = {
   paragraphs: [
-    "I'm an MCA graduate and a builder at heart. At Fitelo I work as a Junior Program Manager, where my job is equal parts product, data and engineering — I find where operations break and I ship tools that fix them.",
-    "I've built a Quality-team CRM that turns client emails and WhatsApp queries into structured tickets, AI panels powered by Claude and strong prompt engineering, and analytics stacks that give teams real numbers to act on. I move comfortably from a Supabase schema to a Metabase dashboard to a Gupshup WhatsApp template.",
+    "I'm an MCA graduate and a builder at heart. At Fitelo I was promoted from Junior Program Manager to Assistant Manager — Product AI, where I own AI products end-to-end — I find where sales and operations break and I ship tools and agents that fix them.",
+    "I've built a sales CRM from scratch, AI agents and automations that lift sales-ops efficiency and conversions, Slack automations and AI agents that take repetitive work off teams, a Quality-team ticketing CRM, and analytics stacks that give teams real numbers to act on. I move comfortably from a Supabase schema to an agent prompt to a Slack workflow.",
     "I'm obsessed with clean systems, thoughtful automation and using AI the right way. If it can be measured, automated or made 10x simpler, that's the problem I want.",
   ],
   focus: [
-    "AI product & automation",
+    "AI product management",
+    "AI agents & automation",
+    "Sales CRMs & internal tools",
     "Data analytics & dashboards",
-    "Internal tools & CRMs",
-    "Program & delivery management",
   ],
 } as const;
 
@@ -71,7 +71,8 @@ export const skillGroups: SkillGroup[] = [
       "RAG Systems",
       "GenAI Tools",
       "Machine Learning",
-      "AI Agents & Panels",
+      "AI Agents",
+      "Agentic Workflows",
     ],
   },
   {
@@ -101,7 +102,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: "Growth & Ops Tooling",
     accent: "violet",
-    skills: ["MoEngage", "Gupshup (WhatsApp)", "Admin Panels", "CRM Systems", "Analytics"],
+    skills: ["Slack Automations", "Sales Ops", "CRM Systems", "MoEngage", "Gupshup (WhatsApp)", "Admin Panels"],
   },
 ];
 
@@ -118,11 +119,25 @@ export type Experience = {
 export const experiences: Experience[] = [
   {
     company: "Fitelo",
-    role: "Junior Program Manager",
+    role: "Assistant Manager — Product AI",
     period: "Present",
     current: true,
     summary:
-      "Own the build of internal products, AI panels and analytics that power day-to-day operations across teams.",
+      "Promoted to lead AI products — owning CRMs, AI agents and automations that drive sales and operational efficiency.",
+    highlights: [
+      "Built a full sales CRM from scratch — lead management, pipelines and workflows tailored to how Fitelo's sales team actually sells.",
+      "Designed AI agents and automations that streamline sales operations, cutting manual work for the team and helping increase sales.",
+      "Shipped Slack automations and AI agents for different teams — alerts, reports, summaries and task workflows delivered right where people work.",
+      "Own AI products end-to-end — from problem discovery and prompt design to deployment and adoption across teams.",
+    ],
+    stack: ["Claude", "AI Agents", "Next.js", "Supabase", "Slack API", "Neon", "Vercel", "AWS"],
+  },
+  {
+    company: "Fitelo",
+    role: "Junior Program Manager",
+    period: "Previous",
+    summary:
+      "Owned the build of internal products, AI panels and analytics that power day-to-day operations across teams.",
     highlights: [
       "Designed and shipped a Quality-team CRM that converts client emails and WhatsApp queries into structured tickets, routed to Relationship Managers for resolution.",
       "Built AI panels and internal tools powered by Claude and careful prompt engineering to automate repetitive workflows.",
@@ -155,6 +170,33 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    title: "Sales CRM — Built from Scratch",
+    tagline: "Leads → pipeline → conversion",
+    description:
+      "A custom CRM built ground-up for the sales team — lead capture, assignment, pipeline stages, follow-ups and performance tracking — designed around real sales workflows instead of off-the-shelf limits.",
+    tags: ["Next.js", "Supabase", "Neon", "Vercel"],
+    category: "Product",
+    featured: true,
+  },
+  {
+    title: "Sales-Ops AI Agents & Automations",
+    tagline: "AI that makes sales teams faster",
+    description:
+      "AI agents and automations that take repetitive work off sales operations — lead triage, follow-up nudges, call/lead insights and reporting — helping the team move faster and increase sales.",
+    tags: ["Claude", "AI Agents", "Prompt Engineering", "Automation"],
+    category: "AI",
+    featured: true,
+  },
+  {
+    title: "Slack Automations & AI Agents",
+    tagline: "AI agents where teams already work",
+    description:
+      "A set of Slack automations and AI agents for different teams — automated alerts, daily reports, summaries and task workflows — so people get answers and updates without leaving Slack.",
+    tags: ["Slack API", "Claude", "AI Agents", "Webhooks"],
+    category: "Automation",
+    featured: true,
+  },
   {
     title: "Quality CRM & Ticketing System",
     tagline: "Email + WhatsApp → tickets → resolution",

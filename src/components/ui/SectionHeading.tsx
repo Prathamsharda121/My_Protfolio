@@ -1,32 +1,48 @@
 import { Reveal } from "@/components/Reveal";
+import { SplitText } from "@/components/ui/SplitText";
+import { Scramble } from "@/components/ui/Scramble";
 
 type Props = {
+  index?: string;
   eyebrow: string;
   title: string;
+  /** Optional word(s) at the end of the title rendered in italic serif gradient. */
+  accent?: string;
   description?: string;
   align?: "left" | "center";
 };
 
-export function SectionHeading({ eyebrow, title, description, align = "left" }: Props) {
+export function SectionHeading({ index, eyebrow, title, accent, description, align = "left" }: Props) {
+  const center = align === "center";
   return (
-    <Reveal className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
-      <div
-        className={`inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium tracking-wide text-cyan ${
-          align === "center" ? "mx-auto" : ""
-        }`}
-      >
-        <span className="relative flex h-1.5 w-1.5">
-          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan opacity-70" />
-          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan" />
-        </span>
-        {eyebrow}
-      </div>
-      <h2 className="mt-4 font-display text-3xl font-bold tracking-tight text-balance sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
-        {title}
+    <div className={center ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
+      <Reveal>
+        <div className={`flex items-center gap-3 ${center ? "justify-center" : ""}`}>
+          {index && <span className="font-mono text-xs text-cyan">{index}</span>}
+          <span className="h-px w-10 bg-gradient-to-r from-cyan to-violet" />
+          <Scramble text={eyebrow.toUpperCase()} className="font-mono text-xs uppercase tracking-[0.25em] text-muted" />
+        </div>
+      </Reveal>
+      <h2 className="mt-5 font-display text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl">
+        <SplitText text={title} />
+        {accent && (
+          <>
+            {" "}
+            <SplitText
+              text={accent}
+              delay={0.25}
+              wordClassName="font-serif italic font-normal gradient-flow pr-1"
+            />
+          </>
+        )}
       </h2>
       {description && (
-        <p className="mt-4 text-base leading-relaxed text-muted text-balance">{description}</p>
+        <Reveal delay={0.2}>
+          <p className={`mt-5 max-w-xl text-base leading-relaxed text-muted sm:text-lg ${center ? "mx-auto" : ""}`}>
+            {description}
+          </p>
+        </Reveal>
       )}
-    </Reveal>
+    </div>
   );
 }
