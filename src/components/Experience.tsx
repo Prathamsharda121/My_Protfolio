@@ -1,91 +1,97 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Briefcase, ChevronRight } from "lucide-react";
+import { useRef } from "react";
+import { motion, useScroll, useSpring } from "framer-motion";
 import { experiences } from "@/lib/content";
 import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Spotlight } from "@/components/ui/Spotlight";
 
 export function Experience() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 0.7", "end 0.6"] });
+  const scaleY = useSpring(scrollYProgress, { stiffness: 120, damping: 30 });
+
   return (
-    <section id="experience" className="relative scroll-mt-24 px-5 py-24 sm:px-8 sm:py-28">
-      <div className="mx-auto max-w-6xl">
-        <SectionHeading eyebrow="Experience" title="Where I've been shipping." />
+    <section id="experience" className="relative scroll-mt-24 px-5 py-28 sm:px-8 sm:py-36">
+      <div className="mx-auto max-w-7xl">
+        <SectionHeading index="03" eyebrow="Experience" title="Where I've been" accent="shipping." />
 
-        <div className="relative mt-12">
-          {/* Timeline rail */}
-          <div className="absolute bottom-0 left-4 top-2 w-px bg-gradient-to-b from-cyan/50 via-violet/30 to-transparent md:left-1/2" />
+        <div ref={ref} className="relative mt-16 pl-10 sm:pl-16">
+          {/* Rail + scroll-linked glowing fill */}
+          <div className="absolute left-3 top-0 bottom-0 w-px bg-white/10 sm:left-6" />
+          <motion.div
+            style={{ scaleY }}
+            className="absolute left-3 top-0 bottom-0 w-px origin-top bg-gradient-to-b from-cyan via-violet to-fuchsia-400 shadow-[0_0_12px_rgba(103,232,249,0.8)] sm:left-6"
+          />
 
-          <div className="space-y-10">
+          <div className="space-y-8">
             {experiences.map((exp, i) => (
-              <Reveal key={exp.company} delay={i * 0.05}>
-                <div
-                  className={`relative grid gap-6 pl-12 md:grid-cols-2 md:pl-0 ${
-                    i % 2 === 0 ? "" : "md:[direction:rtl]"
-                  }`}
-                >
+              <Reveal key={`${exp.company}-${exp.role}`} delay={0.05}>
+                <div className="relative">
                   {/* Node */}
-                  <span className="absolute left-4 top-2 z-10 -translate-x-1/2 md:left-1/2">
-                    <span className="relative flex h-4 w-4">
-                      {exp.current && (
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan opacity-70" />
-                      )}
-                      <span className="relative inline-flex h-4 w-4 rounded-full border-2 border-bg bg-gradient-to-br from-cyan to-violet" />
-                    </span>
+                  <span
+                    className={`absolute -left-10 top-8 grid h-6 w-6 ml-3 -translate-x-1/2 place-items-center rounded-full border sm:-left-16 sm:ml-6 ${
+                      exp.current ? "border-cyan bg-cyan/20" : "border-white/20 bg-bg"
+                    }`}
+                  >
+                    <span className={`h-2 w-2 rounded-full ${exp.current ? "bg-cyan animate-pulse" : "bg-white/40"}`} />
                   </span>
 
-                  {/* Card */}
-                  <div className={`[direction:ltr] ${i % 2 === 0 ? "md:pr-10" : "md:col-start-2 md:pl-10"}`}>
-                    <motion.div
-                      whileHover={{ y: -4 }}
-                      className="glass rounded-2xl p-6 transition-colors hover:border-white/20"
-                    >
-                      <div className="mb-3 flex items-center justify-between gap-3">
-                        <div className="flex items-center gap-2.5">
-                          <span className="grid h-9 w-9 place-items-center rounded-lg bg-white/5 text-cyan">
-                            <Briefcase className="h-4 w-4" />
-                          </span>
-                          <div>
-                            <h3 className="font-display text-lg font-semibold leading-tight">
-                              {exp.role}
-                            </h3>
-                            <p className="text-sm text-cyan">{exp.company}</p>
-                          </div>
+                  <Spotlight
+                    className={`rounded-3xl border p-6 sm:p-9 ${
+                      exp.current
+                        ? "border-cyan/25 bg-gradient-to-br from-cyan/[0.07] via-violet/[0.05] to-transparent"
+                        : "border-white/10 bg-white/[0.02]"
+                    }`}
+                  >
+                    <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+                      <div>
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="font-mono text-xs text-faint">0{experiences.length - i}</span>
+                          {exp.current ? (
+                            <span className="rounded-full bg-gradient-to-r from-cyan to-violet px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wider text-[#04060a]">
+                              Current
+                            </span>
+                          ) : (
+                            <span className="rounded-full border border-white/10 px-2.5 py-0.5 text-[11px] uppercase tracking-wider text-muted">
+                              {exp.period}
+                            </span>
+                          )}
                         </div>
-                        <span
-                          className={`shrink-0 rounded-full border px-2.5 py-1 text-xs font-medium ${
-                            exp.current
-                              ? "border-emerald-400/30 bg-emerald-400/10 text-emerald-300"
-                              : "border-white/10 bg-white/5 text-muted"
-                          }`}
-                        >
-                          {exp.period}
-                        </span>
+                        <h3 className="mt-4 font-display text-2xl font-semibold leading-tight tracking-tight sm:text-3xl">
+                          {exp.role}
+                        </h3>
+                        <p className="mt-1 font-serif text-xl italic text-cyan">{exp.company}</p>
+                        <p className="mt-4 text-sm leading-relaxed text-muted">{exp.summary}</p>
+                        <div className="mt-5 flex flex-wrap gap-1.5">
+                          {exp.stack.map((s) => (
+                            <span
+                              key={s}
+                              className="rounded-md border border-white/10 bg-white/[0.04] px-2 py-1 font-mono text-[11px] text-muted"
+                            >
+                              {s}
+                            </span>
+                          ))}
+                        </div>
                       </div>
-
-                      <p className="text-sm leading-relaxed text-muted">{exp.summary}</p>
-
-                      <ul className="mt-4 space-y-2">
-                        {exp.highlights.map((h) => (
-                          <li key={h} className="flex gap-2 text-sm leading-relaxed text-ink/85">
-                            <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-violet-soft" />
-                            <span>{h}</span>
-                          </li>
+                      <ul className="space-y-3">
+                        {exp.highlights.map((h, j) => (
+                          <motion.li
+                            key={h}
+                            initial={{ opacity: 0, x: 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-40px" }}
+                            transition={{ duration: 0.6, delay: j * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                            className="flex gap-3 rounded-2xl border border-white/5 bg-black/20 p-4 text-sm leading-relaxed text-ink/85"
+                          >
+                            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-cyan to-violet" />
+                            {h}
+                          </motion.li>
                         ))}
                       </ul>
-
-                      <div className="mt-4 flex flex-wrap gap-1.5">
-                        {exp.stack.map((s) => (
-                          <span
-                            key={s}
-                            className="rounded-md bg-white/5 px-2 py-0.5 font-mono text-xs text-muted"
-                          >
-                            {s}
-                          </span>
-                        ))}
-                      </div>
-                    </motion.div>
-                  </div>
+                    </div>
+                  </Spotlight>
                 </div>
               </Reveal>
             ))}

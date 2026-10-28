@@ -60,10 +60,9 @@
     font-weight: 700;
     text-align: center;
     letter-spacing: 0.2px;
-    background: linear-gradient(100deg, #67e8f9, #a78bfa);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    line-height: 1.35;
+    padding-bottom: 0.5mm;
+    color: #7dd3fc;
   }
   .side .role {
     text-align: center;
@@ -242,7 +241,7 @@
     <aside class="side">
       <img class="avatar" src="pratham.jpg" alt="Pratham Sharda" />
       <h1>Pratham Sharda</h1>
-      <div class="role">Junior Program Manager · AI &amp; Data</div>
+      <div class="role">Assistant Manager · Product AI</div>
 
       <div class="side-block">
         <div class="side-title">Contact</div>
@@ -260,7 +259,8 @@
           <div class="chips">
             <span class="chip">Claude</span><span class="chip">Prompt Engineering</span>
             <span class="chip">LangChain</span><span class="chip">RAG</span>
-            <span class="chip">GenAI</span><span class="chip">Machine Learning</span>
+            <span class="chip">AI Agents</span><span class="chip">GenAI</span>
+            <span class="chip">Machine Learning</span>
           </div>
         </div>
         <div class="skill-cat">
@@ -291,8 +291,8 @@
         <div class="skill-cat">
           <div class="cat">Growth &amp; Ops</div>
           <div class="chips">
-            <span class="chip">MoEngage</span><span class="chip">Gupshup</span>
-            <span class="chip">CRM</span><span class="chip">Admin Panels</span>
+            <span class="chip">Slack Automations</span><span class="chip">Sales Ops</span>
+            <span class="chip">CRM</span><span class="chip">MoEngage</span><span class="chip">Gupshup</span>
           </div>
         </div>
       </div>
@@ -321,11 +321,11 @@
 
     <!-- Main -->
     <main class="main">
-      <div class="headline">Junior Program Manager — AI · Data · Automation</div>
+      <div class="headline">Product AI — AI Agents · CRM · Automation</div>
       <p class="tagline">
-        MCA graduate and product-minded builder who turns messy operations into clean, automated tools.
-        I ship AI-powered internal products, CRMs and analytics stacks end-to-end — from database schema
-        to production deployment — using strong prompt engineering and a bias for measurable impact.
+        MCA graduate and product-minded AI builder, promoted to Assistant Manager — Product AI at Fitelo.
+        I build CRMs from scratch, AI agents and Slack automations that make sales and operations teams
+        faster — owning products end-to-end, from database schema to production deployment.
       </p>
 
       <div class="section">
@@ -334,17 +334,32 @@
         <div class="job">
           <div class="job-top">
             <div>
-              <span class="job-role">Junior Program Manager</span> ·
+              <span class="job-role">Assistant Manager — Product AI</span> ·
               <span class="job-co">Fitelo</span>
             </div>
             <span class="job-period">Present</span>
           </div>
-          <div class="job-sum">Own the build of internal products, AI panels and analytics that power day-to-day operations across teams.</div>
+          <div class="job-sum">Promoted to lead AI products — CRMs, AI agents and automations that drive sales and operational efficiency.</div>
+          <ul class="bullets">
+            <li>Built a full <b>sales CRM from scratch</b> — lead management, pipelines and workflows tailored to how the sales team sells.</li>
+            <li>Designed <b>AI agents and automations for sales operations</b> that cut manual work and help increase sales.</li>
+            <li>Shipped <b>Slack automations and AI agents</b> for different teams — alerts, reports, summaries and task workflows.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <div class="job-top">
+            <div>
+              <span class="job-role">Junior Program Manager</span> ·
+              <span class="job-co">Fitelo</span>
+            </div>
+            <span class="job-period past">Previous</span>
+          </div>
+          <div class="job-sum">Owned the build of internal products, AI panels and analytics that power day-to-day operations across teams.</div>
           <ul class="bullets">
             <li>Designed and shipped a <b>Quality-team CRM</b> that converts client emails and WhatsApp queries into structured, trackable tickets routed to Relationship Managers for resolution.</li>
             <li>Built <b>AI panels and internal tools</b> powered by Claude and careful prompt engineering to automate repetitive, high-volume workflows.</li>
-            <li>Ran production stacks across <b>Vercel, Neon, Supabase, AWS and GitLab</b> — owning everything from database to deployment.</li>
-            <li>Integrated <b>MoEngage, Gupshup WhatsApp templates and Metabase</b> to connect messaging, data and action, with analytics dashboards for decision-making.</li>
+                        <li>Integrated <b>MoEngage, Gupshup WhatsApp templates and Metabase</b> to connect messaging, data and action, with analytics dashboards for decision-making.</li>
           </ul>
         </div>
 
@@ -368,16 +383,29 @@
         <div class="sec-head"><span class="bar"></span><h2>Key Projects</h2><span class="rule"></span></div>
 
         <div class="proj">
+          <div class="proj-top"><span class="proj-name">Sales CRM — Built from Scratch</span><span class="proj-tag">Leads → pipeline → conversion</span></div>
+          <div class="proj-desc">Custom CRM for the sales team covering lead capture, assignment, pipeline stages, follow-ups and performance tracking.</div>
+          <div class="proj-stack">Next.js · Supabase · Neon · Vercel</div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-top"><span class="proj-name">Sales-Ops AI Agents &amp; Automations</span><span class="proj-tag">AI that makes sales teams faster</span></div>
+          <div class="proj-desc">AI agents handling lead triage, follow-up nudges, lead insights and reporting — reducing manual effort and helping increase sales.</div>
+          <div class="proj-stack">Claude · AI Agents · Prompt Engineering · Automation</div>
+        </div>
+
+        <div class="proj">
+          <div class="proj-top"><span class="proj-name">Slack Automations &amp; AI Agents</span><span class="proj-tag">AI agents where teams work</span></div>
+          <div class="proj-desc">Slack automations and AI agents for different teams — automated alerts, daily reports, summaries and task workflows.</div>
+          <div class="proj-stack">Slack API · Claude · AI Agents · Webhooks</div>
+        </div>
+
+        <div class="proj">
           <div class="proj-top"><span class="proj-name">Quality CRM &amp; Ticketing System</span><span class="proj-tag">Email + WhatsApp → tickets → resolution</span></div>
           <div class="proj-desc">A CRM where client queries over email and WhatsApp are captured, de-duplicated and turned into trackable tickets that RMs resolve, with full status history and analytics.</div>
           <div class="proj-stack">Next.js · Supabase · Gupshup · Vercel · AWS</div>
         </div>
 
-        <div class="proj">
-          <div class="proj-top"><span class="proj-name">AI Panels &amp; Internal Tools</span><span class="proj-tag">Claude-powered automation</span></div>
-          <div class="proj-desc">Admin panels with built-in AI features that automate content, triage and repetitive decisions across internal teams using strong prompt engineering.</div>
-          <div class="proj-stack">Claude · Prompt Engineering · Next.js · Neon</div>
-        </div>
 
         <div class="proj">
           <div class="proj-top"><span class="proj-name">Analytics &amp; Dashboards Stack</span><span class="proj-tag">Metabase · Power BI · MoEngage</span></div>
@@ -385,23 +413,8 @@
           <div class="proj-stack">Metabase · Power BI · MoEngage · SQL</div>
         </div>
 
-        <div class="proj">
-          <div class="proj-top"><span class="proj-name">RAG Chatbot</span><span class="proj-tag">Document-grounded Q&amp;A</span></div>
-          <div class="proj-desc">An AI chatbot built with LangChain that retrieves relevant context from documents and answers questions grounded in source material.</div>
-          <div class="proj-stack">LangChain · Python · RAG · GenAI</div>
-        </div>
 
-        <div class="proj">
-          <div class="proj-top"><span class="proj-name">Stocks Power BI Dashboard</span><span class="proj-tag">Live-updating market dashboard</span></div>
-          <div class="proj-desc">Transformed raw Excel stock data into a live, auto-refreshing Power BI dashboard with interactive visuals for tracking performance over time.</div>
-          <div class="proj-stack">Power BI · Excel · Data Modeling</div>
-        </div>
 
-        <div class="proj">
-          <div class="proj-top"><span class="proj-name">House Price Prediction</span><span class="proj-tag">Random Forest regression</span></div>
-          <div class="proj-desc">A predictive ML model estimating housing prices from key property attributes, with feature engineering and evaluation.</div>
-          <div class="proj-stack">Python · Machine Learning · Random Forest</div>
-        </div>
       </div>
     </main>
   </div>
